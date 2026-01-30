@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Productivity App | Home</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Segoe UI",sans-serif;
+}
+
+body{
+  background:#ffffff;
+  color:#333;
+}
+
+/* ===== NAVBAR ===== */
+header{
+  color: #ffffff;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:linear-gradient(135deg,#9b5de5,#f15bb5);
+  box-shadow:0 10px 40px rgba(0,0,0,0.3);
+} 
+
+.navbar{
+  max-width:1200px;
+  margin:auto;
+  padding:18px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand{
+  font-size:1.6rem;
+  font-weight:bold;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.nav-links a{
+  color:#ffffff;
+  text-decoration:none;
+  font-weight:600;
+}
+
+
+select{
+  padding:6px 10px;
+  border-radius:8px;
+  border:none;
+  font-weight:bold;
+}
+
+/* ===== HERO ===== */
+.hero{
+  text-align:center;
+  padding:90px 20px;
+}
+
+.hero h1{
+  font-size:3rem;
+  margin-bottom:15px;
+}
+
+/* ===== FEATURES ===== */
+.features{
+  max-width:1200px;
+  margin:auto;
+  padding:40px 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
+
+.feature-card{
+  background:linear-gradient(145deg,#22223b,#1a1a2e);
+  padding:30px;
+  border-radius:20px;
+   box-shadow:10px 10px 30px #0b0b14,
+             -10px -10px 30px #2a2a40;
+   text-align:center;
+}
+
+.feature-card i{
+  font-size:2.5rem;
+  color:#f15bb5;;
+  margin-bottom:15px;
+}
+
+.feature-card h3{
+  color:#fee440;
+}
+.feature-card p{
+  color:  #cfcfff;
+}
+
+/* ===== BUTTON ===== */
+.start-btn{
+  margin-top:20px;
+  padding:12px 28px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(135deg,#EE6983,#f15bb5);
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.start-btn:hover{
+  transform:scale(1.08);
+}
+
+
+/* ===== FOOTER ===== */
+footer{
+  text-align:center;
+  padding:30px;
+  background:#0f0f1a;
+  color:white;
+  margin-top:40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="navbar">
+    <div class="brand">💰Personal Productivity App</div>
+
+    <div class="nav-links">
+      <a href="http://127.0.0.1:5500/home.html">Home</a>
+      <a href="http://127.0.0.1:5500/information.html">Information</a>
+      <a href="http://127.0.0.1:5500/1login.html">Login</a>
+      <a href="http://127.0.0.1:5500/sign%20up%202.html">Sign Up</a>
+
+      <select onchange="changeLang(this.value)">
+        <option value="">🌐 Language</option>
+        <option value="en">English</option>
+        <option value="hi">Hindi</option>
+        <option value="mr">Marathi</option>
+      </select>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>💰All-in-One Personal Productivity App</h1>
+  <p>Manage expenses, tasks, passwords & notes in one place.</p>
+</section>
+
+<section class="features">
+  <div class="feature-card">
+    <i class="fa-solid fa-wallet"></i>
+    <h3>Expense Tracker</h3>
+    <p>Track income & expenses easily.</p>
+    <button class="start-btn" onclick="openFeature('Expense Tracker.html')">Start</button>
+  </div>
+
+  <div class="feature-card">
+    <i class="fa-solid fa-list-check"></i>
+    <h3>Smart To-Do List</h3>
+    <p>Plan tasks with reminders.</p>
+    <button class="start-btn" onclick="openFeature('1 to-do list.html')">Start</button>
+  </div>
+
+  <div class="feature-card">
+    <i class="fa-solid fa-lock"></i>
+    <h3>Password Manager</h3>
+    <p>Store passwords securely.</p>
+    <button class="start-btn" onclick="openFeature('password manages.html')">Start</button>
+  </div>
+
+  <div class="feature-card">
+    <i class="fa-solid fa-book"></i>
+    <h3>Digital Diary</h3>
+    <p>Write and search daily notes.</p>
+    <button class="start-btn" onclick="openFeature('1digital diary.html')">Start</button>
+  </div>
+</section>
+<footer>© 2026 Personal Productivity App </footer>
+<script>
+function openFeature(url){
+  window.location.href = url;
+}
+function changeLang(lang){
+  if(lang) alert("Language switched to: " + lang);
+}
+</script>
+
+</body>
+</html>

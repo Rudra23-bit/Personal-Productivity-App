@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Productivity App | Information</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Segoe UI",sans-serif;
+}
+
+body{
+  background-color:#ffffff;
+  color:#333;
+}
+
+/* ===== NAVBAR ===== */
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:linear-gradient(135deg,#9b5de5,#f15bb5);
+  box-shadow:0 10px 40px rgba(0,0,0,0.6);
+}
+
+.navbar{
+  max-width:1200px;
+  margin:auto;
+  padding:18px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand{
+  font-size:1.6rem;
+  font-weight:bold;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.nav-links a{
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* ===== HERO ===== */
+.hero{
+  text-align:center;
+  padding:80px 20px 40px;
+}
+
+.hero h1{
+  font-size:3rem;
+  margin-bottom:15px;
+}
+
+.hero p{
+  max-width:700px;
+  margin:auto;
+  color:#333;
+  font-size:17px;
+}
+
+/* ===== IMAGE SECTION ===== */
+.preview{
+  max-width:1000px;
+  margin:40px auto;
+  padding:0 20px;
+  text-align:center;
+}
+
+.preview img{
+  width:100%;
+  max-width:850px;
+  border-radius:22px;
+  box-shadow:0 20px 50px rgba(0,0,0,.7);
+}
+
+/* ===== INFO CARDS ===== */
+.info-section{
+  max-width:1200px;
+  margin:auto;
+  padding:40px 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
+
+.info-card{
+  background:linear-gradient(145deg,#22223b,#1a1a2e);
+  padding:30px;
+  border-radius:20px;
+  box-shadow:10px 10px 30px #0b0b14;
+  text-align:center;
+}
+
+.info-card i{
+  font-size:2.5rem;
+  color:#f15bb5;
+  margin-bottom:15px;
+}
+
+.info-card h3{
+  color:#fee440;
+  margin-bottom:10px;
+}
+
+.info-card p{
+  color:#cfcfff;
+  font-size:15px;
+  line-height:1.6;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  color:#ffffff;
+  text-align:center;
+  padding:30px;
+  background:#0f0f1a;
+  margin-top:40px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="navbar">
+    <div class="brand">💰Personal Productivity App</div>
+    <div class="nav-links">
+      <a href="http://127.0.0.1:5500/home.html">Home</a>
+      <a href="http://127.0.0.1:5500/information.html">Information</a>
+      <a href="http://127.0.0.1:5500/1login.html">Login</a>
+      <a href="http://127.0.0.1:5500/sign%20up%202.html">Sign Up</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>About Our Application</h1>
+  <p>
+    Personal Productivity App is an all-in-one solution designed to help users
+    manage daily activities efficiently — from finances to personal notes.
+  </p>
+</section>
+
+<!-- WEBSITE IMAGE -->
+<section class="preview">
+  <!-- Replace src with screenshot of your website -->
+  <img src="https://via.placeholder.com/900x450.png?text=Personal+Productivity+App+Preview" 
+       alt="Website Preview">
+</section>
+
+<section class="info-section">
+
+  <div class="info-card">
+    <i class="fa-solid fa-wallet"></i>
+    <h3>Expense Tracker</h3>
+    <p>
+      Track daily income and expenses, analyze spending habits,
+      and manage monthly budgets effectively.
+    </p>
+  </div>
+
+  <div class="info-card">
+    <i class="fa-solid fa-list-check"></i>
+    <h3>Smart To-Do List</h3>
+    <p>
+      Create tasks, set reminders, and stay productive
+      with an easy-to-use task management system.
+    </p>
+  </div>
+
+  <div class="info-card">
+    <i class="fa-solid fa-lock"></i>
+    <h3>Password Manager</h3>
+    <p>
+      Securely store and manage passwords using
+      encrypted storage for maximum safety.
+    </p>
+  </div>
+
+  <div class="info-card">
+    <i class="fa-solid fa-book"></i>
+    <h3>Digital Diary</h3>
+    <p>
+      Write personal notes and daily experiences
+      in a secure digital diary anytime.
+    </p>
+  </div>
+
+</section>
+
+<footer>
+  © 2026 Personal Productivity App | Designed for Smart Living
+</footer>
+
+</body>
+</html>

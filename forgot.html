@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Productivity App - Forgot Password</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background:#ffffff;;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== HEADER ===== */
+header {
+  background: linear-gradient(135deg, #9b5de5, #f15bb5);
+  padding: 35px 20px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+header h1 {
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+}
+
+/* ===== CARD ===== */
+.auth-section {
+  background: linear-gradient(145deg, #22223b, #1a1a2e);
+  max-width: 420px;
+  width: 92%;
+  margin: 60px auto;
+  padding: 35px 30px;
+  border-radius: 22px;
+  box-shadow:
+    12px 12px 35px #0b0b14,
+    -12px -12px 35px #2a2a40;
+  text-align: center;
+}
+
+.auth-section h2 {
+  color: #fee440;
+  margin-bottom: 15px;
+}
+
+.auth-section p {
+  color: #cfcfff;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+/* ===== INPUT ===== */
+.input-group {
+  text-align: left;
+  margin-bottom: 22px;
+}
+
+.input-group label {
+  font-size: 14px;
+  color: #cfcfff;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #0f0f1a;
+  padding: 16px 18px;
+  min-height: 58px;
+  border-radius: 14px;
+  box-shadow:
+    inset 3px 3px 6px #090912,
+    inset -3px -3px 6px #2a2a40;
+}
+
+.input-wrapper i {
+  font-size: 1.35rem;
+  color: #f15bb5;
+  text-shadow:
+    2px 2px 0 #9b5de5,
+    4px 4px 10px rgba(0,0,0,0.6);
+}
+
+input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 16px;
+}
+
+/* ===== BUTTON ===== */
+.btn-signin {
+  width: 100%;
+  margin-top: 15px;
+  padding: 16px;
+  border-radius: 16px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, #9b5de5, #f15bb5);
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(155,93,229,0.6);
+  transition: 0.3s;
+}
+
+.btn-signin:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(241,91,181,0.8);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.footer a {
+  color: #fee440;
+  text-decoration: none;
+  display: block;
+  margin: 8px 0;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>💰 Personal Productivity App</h1>
+</header>
+
+<div class="auth-section">
+  <h2>Forgot Password</h2>
+  <p>Enter your registered email address. We’ll send you a password reset link.</p>
+
+  <form id="forgotForm">
+    <div class="input-group">
+      <label>Email Address</label>
+      <div class="input-wrapper">
+        <i class="fa-regular fa-envelope"></i>
+        <input type="email" id="email" placeholder="Enter your email" required>
+      </div>
+    </div>
+
+    <button type="submit" class="btn-signin">SEND RESET LINK</button>
+  </form>
+</div>
+
+<footer class="footer">
+  <a href="http://127.0.0.1:5500/1login.html">← Back to Login</a>
+</footer>
+
+<script>
+document.getElementById("forgotForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const email = document.getElementById("email").value;
+
+  if(email){
+    alert("Password reset link sent to: " + email);
+  }
+});
+</script>
+
+</body>
+</html>
+

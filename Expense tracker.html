@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expense Tracker | Personal Productivity App</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background:#ffffff;
+  color: white;
+}
+
+/* ===== HEADER / NAVBAR ===== */
+header {
+  background: linear-gradient(135deg, #9b5de5, #f15bb5);
+  padding: 20px 30px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.navbar .brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.navbar .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar .nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  cursor: pointer;
+}
+
+.navbar .nav-links a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #fee440;
+  left: 0;
+  bottom: -4px;
+  transition: 0.3s;
+}
+
+.navbar .nav-links a:hover::after {
+  width: 100%;
+}
+
+.navbar select {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ===== PAGE TITLE ===== */
+header h1 {
+  margin-top: 15px;
+  text-align: center;
+  font-size:2.2rem;
+}
+
+header p {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 1rem;
+  color: #fee440;
+}
+
+/* ===== EXPENSE CARD ===== */
+section {
+  background: linear-gradient(145deg, #22223b, #1a1a2e);
+  width: 92%;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 35px;
+  border-radius: 22px;
+  box-shadow:
+    10px 10px 30px #0b0b14,
+    -10px -10px 30px #2a2a40;
+}
+
+section h2 {
+  margin-bottom: 20px;
+  color: #fee440;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+section h2 i {
+  font-size: 2rem;
+  color: #f15bb5;
+  text-shadow: 2px 2px 0 #9b5de5, 4px 4px 10px rgba(0,0,0,0.6);
+}
+
+input, select {
+  width: 100%;
+  height: 52px;
+  margin: 14px 0;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  background: #0f0f1a;
+  color: white;
+  box-shadow: inset 3px 3px 6px #090912,
+              inset -3px -3px 6px #2a2a40;
+}
+
+input:focus, select:focus {
+  outline: none;
+  box-shadow:
+    inset 2px 2px 4px #090912,
+    inset -2px -2px 4px #2a2a40,
+    0 0 0 2px #9b5de5;
+}
+
+button {
+  width: 100%;
+  height: 54px;
+  margin-top: 18px;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #9b5de5, #f15bb5);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(155,93,229,0.5);
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.06);
+  box-shadow: 0 12px 35px rgba(241,91,181,0.7);
+}
+
+h3 {
+  margin-top: 25px;
+  color: #fee440;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 25px;
+  background: #0f0f1a;
+  margin-top: 50px;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+/* ===== MODALS ===== */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-box {
+  background: #1a1a2e;
+  padding: 30px;
+  width: 320px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,.8);
+  text-align: center;
+}
+
+.modal-box h2 {
+  margin-bottom: 15px;
+  color: #fee440;
+}
+
+.modal-box input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: none;
+  background: #0f0f1a;
+  color: white;
+}
+
+.modal-box button {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.close {
+  float: right;
+  cursor: pointer;
+  font-size: 20px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <div class="brand">💰Personal Productivity App</div>
+
+    <div class="nav-links">
+      <a href="http://127.0.0.1:5500/home.html">Home</a>
+      <a href="http://127.0.0.1:5500/1login.html">Login</a>
+      <a href="http://127.0.0.1:5500/sign%20up%202.html">Sign Up</a>
+      <select onchange="changeLanguage(this.value)">
+        <option>🌐 Language</option>
+        <option value="en">English</option>
+        <option value="hi">Hindi</option>
+        <option value="mr">Marathi</option>
+      </select>
+    </div>
+  </div>
+
+  <h1>💰Expense Tracker</h1>
+  <p>Track income & expenses smartly</p>
+</header>
+
+<section>
+  <h2><i class="fa-solid fa-wallet"></i> Expense Tracker</h2>
+
+  <input type="number" id="amount" placeholder="Enter amount">
+  <select id="type">
+    <option value="income">Income</option>
+    <option value="expense">Expense</option>
+  </select>
+
+  <button onclick="addExpense()">Add Transaction</button>
+
+  <h3>Total Balance: ₹<span id="balance">0</span></h3>
+</section>
+
+<footer>
+  © 2026 Personal Productivity App | Expense Tracker
+</footer>
+
+<!-- LOGIN MODAL -->
+<div class="modal" id="login">
+  <div class="modal-box">
+    <span class="close" onclick="closeModal('login')">✖</span>
+    <h2>Login</h2>
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+    <button>Login</button>
+  </div>
+</div>
+
+<!-- SIGNUP MODAL -->
+<div class="modal" id="signup">
+  <div class="modal-box">
+    <span class="close" onclick="closeModal('signup')">✖</span>
+    <h2>Sign Up</h2>
+    <input placeholder="Name">
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+    <button>Create Account</button>
+  </div>
+</div>
+
+<script>
+let balance = 0;
+
+function addExpense() {
+  const amount = Number(document.getElementById("amount").value);
+  const type = document.getElementById("type").value;
+
+  if (!amount || amount <= 0) {
+    alert("Please enter a valid amount");
+    return;
+  }
+
+  balance += type === "income" ? amount : -amount;
+  document.getElementById("balance").innerText = balance;
+  document.getElementById("amount").value = "";
+}
+
+function openModal(id){
+  document.getElementById(id).style.display="flex";
+}
+
+function closeModal(id){
+  document.getElementById(id).style.display="none";
+}
+
+function changeLanguage(lang){
+  alert("Language switched to: " + lang);
+}
+</script>
+
+</body>
+</html>

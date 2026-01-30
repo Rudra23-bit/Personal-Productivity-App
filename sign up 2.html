@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Productivity App - Sign Up</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background:#ffffff;
+  color:#ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== HEADER ===== */
+header {
+  background: linear-gradient(135deg, #9b5de5, #f15bb5);
+  padding: 35px 20px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+header h1 {
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+}
+
+/* ===== AUTH CARD ===== */
+.auth-section {
+  background: linear-gradient(145deg, #22223b, #1a1a2e);
+  max-width: 420px;
+  width: 92%;
+  margin: 50px auto;
+  padding: 35px 30px;
+  border-radius: 22px;
+  box-shadow:
+    12px 12px 35px #0b0b14,
+    -12px -12px 35px #2a2a40;
+  text-align: center;
+}
+
+/* TITLE */
+.auth-section h2 {
+  color: #fee440;
+  margin-bottom: 28px;
+  letter-spacing: 1px;
+}
+
+/* INPUT GROUP */
+.input-group {
+  margin-bottom: 22px;
+  text-align: left;
+}
+
+.input-group label {
+  font-size: 14px;
+  color: #cfcfff;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* INPUT WRAPPER */
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #0f0f1a;
+  padding: 16px 18px;
+  min-height: 58px;
+  border-radius: 14px;
+  box-shadow:
+    inset 3px 3px 6px #090912,
+    inset -3px -3px 6px #2a2a40;
+}
+
+/* ICON */
+.input-wrapper i {
+  font-size: 1.35rem;
+  color: #f15bb5;
+  text-shadow:
+    2px 2px 0 #9b5de5,
+    4px 4px 10px rgba(0,0,0,0.6);
+}
+
+/* INPUT FIELD */
+input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 16.5px;
+  padding: 6px 0;
+}
+
+/* BUTTON */
+.btn-signup {
+  width: 100%;
+  margin-top: 18px;
+  padding: 16px;
+  border-radius: 16px;
+  border: none;
+  font-size: 16.5px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, #9b5de5, #f15bb5);
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(155,93,229,0.6);
+  transition: 0.3s;
+}
+
+.btn-signup:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(241,91,181,0.8);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.footer a {
+  display: block;
+  color: #333;;
+  text-decoration: none;
+  margin: 8px 0;
+  font-weight: 500;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.footer div {
+  margin-top: 12px;
+  color: #cfcfff;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>💰 Personal Productivity App</h1>
+</header>
+
+<div class="auth-section">
+  <h2>Create Account</h2>
+
+  <form id="signupForm">
+
+    <div class="input-group">
+      <label>Full Name</label>
+      <div class="input-wrapper">
+        <i class="fa-solid fa-user"></i>
+        <input type="text" id="name" placeholder="Enter your name" required>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label>Email</label>
+      <div class="input-wrapper">
+        <i class="fa-regular fa-envelope"></i>
+        <input type="email" id="email" placeholder="Enter your email" required>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label>Password</label>
+      <div class="input-wrapper">
+        <i class="fa-solid fa-lock"></i>
+        <input type="password" id="password" placeholder="Create password" required>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label>Confirm Password</label>
+      <div class="input-wrapper">
+        <i class="fa-solid fa-lock"></i>
+        <input type="password" id="confirmPassword" placeholder="Confirm password" required>
+      </div>
+    </div>
+
+    <button type="submit" class="btn-signup">CREATE ACCOUNT</button>
+  </form>
+</div>
+
+<footer class="footer">
+  <a href="http://127.0.0.1:5500/1login.html">Already have an account? Sign In</a>
+<div class="Language"><select onchange="changeLang(this.value)">
+        <option>🌐 Language</option>
+        <option value="en">English</option>
+        <option value="hi">Hindi</option>
+        <option value="mr">Marathi</option>
+      </select></div>
+
+  
+</footer>
+
+<script>
+document.getElementById("signupForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const confirmPassword = document.getElementById("confirmPassword").value;
+
+  if (!name || !email || !password || !confirmPassword) {
+    alert("Please fill in all fields");
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    alert("Passwords do not match");
+    return;
+  }
+
+  alert("Account created successfully for: " + email);
+});
+</script>
+
+</body>
+</html>

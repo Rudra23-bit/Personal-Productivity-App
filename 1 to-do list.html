@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart To-Do & Reminder | Personal Productivity App</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Segoe UI",sans-serif;
+}
+
+body{
+  background:#ffffff;
+  color:white;
+}
+
+/* ===== NAVBAR ===== */
+header{
+  background:linear-gradient(135deg,#9b5de5,#f15bb5);
+  padding:20px 30px;
+  box-shadow:0 10px 40px rgba(0,0,0,.5);
+}
+
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand{
+  font-size:1.5rem;
+  font-weight:bold;
+}
+
+.nav-links{
+  display:flex;
+  gap:20px;
+}
+
+.nav-links a{
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* ===== HEADER ===== */
+header h1{
+  text-align:center;
+  margin-top:15px;
+}
+
+header p{
+  text-align:center;
+  color:#fee440;
+}
+
+/* ===== CARD ===== */
+section{
+  background:linear-gradient(145deg,#22223b,#1a1a2e);
+  width:92%;
+  max-width:650px;
+  margin:40px auto;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:10px 10px 30px #0b0b14,
+             -10px -10px 30px #2a2a40;
+}
+
+section h2{
+  color:#fee440;
+  margin-bottom:20px;
+}
+
+/* ===== FORM ===== */
+input, textarea{
+  width:100%;
+  margin:12px 0;
+  padding:14px;
+  border-radius:12px;
+  border:none;
+  background:#0f0f1a;
+  color:white;
+}
+
+button{
+  width:100%;
+  height:52px;
+  margin-top:10px;
+  border:none;
+  border-radius:14px;
+  font-weight:bold;
+  background:linear-gradient(135deg,#9b5de5,#f15bb5);
+  color:white;
+  cursor:pointer;
+}
+
+ul{
+  list-style:none;
+  margin-top:20px;
+}
+
+li{
+  background:#0f0f1a;
+  padding:14px;
+  border-radius:10px;
+  margin-bottom:10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.completed{
+  text-decoration:line-through;
+  opacity:.6;
+}
+
+.actions i{
+  cursor:pointer;
+  margin-left:10px;
+  color:#fee440;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="navbar">
+    <div class="brand">💰Personal Productivity App</div>
+    <div class="nav-links">
+      <a href="http://127.0.0.1:5500/home.html">Home</a>
+      <a href="http://127.0.0.1:5500/1login.html">Login</a>
+      <a href="http://127.0.0.1:5500/sign%20up%202.html">Sign Up</a>
+    </div>
+  </div>
+
+  <h1>📝 Smart To-Do List</h1>
+  <p>Task reminders with date & time</p>
+</header>
+
+<section>
+  <h2><i class="fa-solid fa-bell"></i> Add Reminder</h2>
+<input type="text" id="task" placeholder="Enter task">
+  <input type="datetime-local" id="time">
+  <button onclick="addTask()">Add Task</button>
+
+  <ul id="taskList"></ul>
+</section>
+
+<script>
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+if(Notification.permission !== "granted"){
+  Notification.requestPermission();
+}
+
+function addTask(){
+  const text=document.getElementById("task").value;
+  const time=document.getElementById("time").value;
+
+  if(!text || !time) return alert("Fill all fields");
+
+  const task={text,time,done:false};
+  tasks.push(task);
+  localStorage.setItem("tasks",JSON.stringify(tasks));
+
+  scheduleNotification(text,time);
+  displayTasks();
+
+  document.getElementById("task").value="";
+  document.getElementById("time").value="";
+}
+
+function scheduleNotification(text,time){
+  const delay=new Date(time)-new Date();
+  if(delay>0){
+    setTimeout(()=>{
+      new Notification("⏰ Reminder",{body:text});
+    },delay);
+  }
+}
+
+function toggleTask(index){
+  tasks[index].done=!tasks[index].done;
+  localStorage.setItem("tasks",JSON.stringify(tasks));
+  displayTasks();
+}
+
+function deleteTask(index){
+  tasks.splice(index,1);
+  localStorage.setItem("tasks",JSON.stringify(tasks));
+  displayTasks();
+}
+
+function displayTasks(){
+  const ul=document.getElementById("taskList");
+  ul.innerHTML="";
+  tasks.forEach((t,i)=>{
+    const li=document.createElement("li");
+    li.className=t.done?"completed":"";
+    li.innerHTML=`
+      <span>${t.text}<br><small>${t.time}</small></span>
+      <div class="actions">
+        <i class="fa-solid fa-check" onclick="toggleTask(${i})"></i>
+        <i class="fa-solid fa-trash" onclick="deleteTask(${i})"></i>
+      </div>`;
+    ul.appendChild(li);
+  });
+}
+
+displayTasks();
+</script>
+
+</body>
+</html>
