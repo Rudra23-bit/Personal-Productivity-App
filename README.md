@@ -46,4 +46,4 @@ The application is divided into four main pillars, each accessible from the cent
 
 3. Minimalist Editor: Distraction-free writing environment.
 
-![image alt]()
+![image alt](https://raw.githubusercontent.com/Rudra23-bit/Personal-Productivity-App/8602d9ffc1c1104374fde40685205d4a700db1e8/Digital%20Diary.jpeg)
