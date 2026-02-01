@@ -36,7 +36,7 @@ The application is divided into four main pillars, each accessible from the cent
 
 3. Toggle Visibility: Peek at your passwords only when you need to.
 
-![image alt]()
+![image alt](https://raw.githubusercontent.com/Rudra23-bit/Personal-Productivity-App/8602d9ffc1c1104374fde40685205d4a700db1e8/Password%20Manager.jpeg)
 
 📓 Digital Diary:
 
